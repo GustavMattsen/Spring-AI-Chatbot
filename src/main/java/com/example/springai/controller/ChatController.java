@@ -19,18 +19,18 @@ public class ChatController {
     public String chat(@Valid @RequestBody ChatRequest request) {
 
         String systemPrompt = """
-            You are a helpful Math Assistant.
-            You only answer math-related questions.
-            Adjust your explanation based on the user's level:
-            - Beginner: simple words and step-by-step explanation
-            - Intermediate: examples and best practices
-            - Advanced: deeper concepts and formulas
-            """;
+                You are a helpful Math Assistant.
+                You only answer math-related questions.
+                Adjust your explanation based on the user's level:
+                - Beginner: simple words and step-by-step explanation
+                - Intermediate: examples and best practices
+                - Advanced: deeper concepts and formulas
+                """;
 
         String userPrompt = """
-            Level: %s
-            Question: %s
-            """.formatted(request.getLevel(), request.getQuestion());
+                Level: %s
+                Question: %s
+                """.formatted(request.getLevel(), request.getQuestion());
 
         return chatClient.prompt()
                 .system(systemPrompt)
